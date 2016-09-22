@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2016 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="phone-1" unicode="&#xe880;" d="M0 615q0 50 28 76l138 138q45 37 77-13l113-211q18-39-14-71l-51-52q-5-6-5-14 25-98 132-195l31-30t36-34 34-26 41-25 40-14q20-6 27 2l61 60q39 30 72 12l203-121q22-14 25-37t-13-39l-141-139q-27-27-74-27-140 4-318 121-258 185-375 406-72 151-67 233z" horiz-adv-x="988" />
+
+<glyph glyph-name="phone-circled" unicode="&#xe881;" d="M0 350q0 207 147 354t353 146 354-146 146-354-146-354-354-146-353 146-147 354z m199 162q-4-51 41-142 71-133 229-248 107-71 193-73 29 0 47 16l84 86q10 10 8 23t-16 24l-123 72q-19 12-45-6l-35-37q-6-6-18-2-11 2-24 8t-25 16-21 16-21 21-20 17q-64 61-80 119 0 4 4 10l31 31q18 18 8 43l-68 129q-12 18-28 16-9 0-19-8l-84-86q-18-16-18-45z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

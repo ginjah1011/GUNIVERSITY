@@ -1,0 +1,49 @@
+// Bootstrap Markdown Editor 
+// --------------------------------------------------
+
+.md-editor {
+  display: block;
+  border: 1px solid @default-border-color;
+
+  > .md-header, .md-footer {
+    display: block;
+    padding: 6px 4px;
+    background: lighten(#3b5998, 56%);
+  }
+
+  > .md-header {
+    margin: 0;
+  }
+  
+  > .md-preview {
+    border-top: 1px dashed @default-border-color;
+    border-bottom: 1px dashed @default-border-color;
+    min-height: 10px;
+    overflow: auto;
+  }
+
+  > textarea {
+    outline: 0;
+    outline: thin dotted  \9; /* IE6-9 */
+    margin: 0;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border: 0;
+    border-top: 1px dashed @default-border-color;
+    border-bottom: 1px dashed @default-border-color;
+    background: lighten(#3b5998, 56%);
+  }
+  
+  .btn {
+	 border: 1px solid @default-border-color;
+	background: @gray-lighter;	 
+	  &.btn-primary {
+		background: @themeColor;
+		border-color: darken(@themeColor, 3%);
+	  }
+	  .fa {
+		font-size: @baseFontSize + 1;
+	  }
+	}
+}

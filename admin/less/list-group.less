@@ -1,0 +1,236 @@
+// List Group - items/
+// --------------------------------------------------
+
+.lists {
+	padding-left: 0;
+	a.list-group-item {color: @gray-dark;}	
+	li {
+		border: 1px solid @default-border-color;
+		border-width: 0 0 1px;
+		margin-bottom: 0;
+		padding: 0 15px;
+		background-color: @white;
+		list-style: none;
+		position: relative;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		height: 39px;
+		line-height: 39px;
+		
+		&:hover {
+			background: @gray-lighter;
+			cursor: pointer;
+			.transition(all 0.3s ease);
+			
+			&:after {
+				content: "\e092";
+				font-family: 'Glyphicons Halflings';
+				display: block;
+				position: absolute;
+				right: 15px;
+				top: 0;
+				color: @gray-light;
+				height: 39px;
+				line-height: 39px;
+				font-size: @baseFontSize + 11;
+			}
+			
+			.icons {
+				.opacity(0.7);
+			}
+		}
+		span, div {
+			display: block;
+			height: 39px;
+			line-height: 39px;
+			float: left;
+			position: relative;
+			overflow: hidden;
+			
+			&.feed {
+				line-height: 15px!important;
+				padding: 12px 0 0;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				//overflow: hidden;
+				max-width: 75%;
+				position: relative;
+				p {
+					margin: 0; padding: 0;
+					font-weight: 600;
+					max-width: 45%;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+				}			
+				small {
+					display: block;
+					font-style: italic;
+					color: @gray-light;
+					font-size: 100%;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+				}
+				
+				a, a:hover, a:focus {
+					text-decoration: none;
+				}
+			}
+			
+			&.date, &.icons, &.users {
+				padding-right: 10px;
+				color: @baseFontcolor;
+			}
+			&.icons {
+				font-size: @baseFontSize + 3;
+			}
+			
+			&.date-time {
+				float:right;
+				position:absolute;
+				top: -10px;
+				right: 15px;
+				font-size: @baseFontSize - 2;
+				color: @baseFontcolor;
+			}
+			
+			img {
+				border: 2px solid @themeColor;
+				width:37px; height:37px; max-width:37px; max-height:37px;
+			}
+		}
+		
+		label {
+			display: none;
+			float: left;
+			height: 39px;
+			line-height: 39px;
+			padding-right: 10px;
+			
+			.labels {
+				float: none;
+			}
+		}
+		
+		&.lg {
+			height: 55px;
+			line-height: 55px;
+			&:hover {			
+				&:after {
+					height: 55px;
+					line-height: 55px;
+				}
+			}
+			span, label, div {
+				height: 55px;
+				line-height: 55px;
+				
+				.labels, input[type=checkbox] {
+					margin-top: 15px;
+				}
+			}
+		}
+	}
+	
+	&.email-list {
+		li {
+			&:hover {
+				cursor: default;
+				&:after {
+					display: none;
+				}
+				
+				.tools {
+					display: block;
+				}
+			}
+			
+			.icons {
+				display: none;
+			}
+			
+			.important {
+				float:right;
+				position:absolute;
+				bottom: -10px;
+				right: 15px;			
+			}
+			
+			.tools {
+				display: none;
+				position: absolute;
+				top: -10px;
+				left: 50%;
+				width: auto;
+					
+				a {
+					display: inline-block;
+					padding-right: 4px;
+					
+					&:last-child {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	
+	}
+}
+
+@media (min-width: 767px) {
+	.lists {
+		li {
+			label {
+				display: block;
+			}
+		}
+		
+		&.email-list {
+			li {
+				.icons {
+					display: block;
+				}
+			}
+
+		}
+	}
+}
+
+.task-lists {
+	a.list-group-item {color: @gray-dark;}
+	
+	li {
+		border: 0 none;
+		padding: 5px 0;
+	}
+
+
+	&.ui-sortable {
+		.list-group-item:hover, a.list-group-item:focus {
+			text-decoration: none;
+		}
+	}
+}
+
+// To Do widget  - example at dashboard
+
+.task-widget {
+	ul.task-lists {list-style:none;}
+	.list-group { 
+		margin-bottom: 0;
+	}
+	.tcb {
+		 display: inline-block; margin-bottom: -5px; 
+		.labels {
+			cursor: pointer;
+		}
+	}	
+	&.task-lists {
+		label.todo-done span {
+			text-decoration: line-through;
+		}
+	}
+
+}

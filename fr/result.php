@@ -134,7 +134,7 @@ if($lang=='en')
 							<div class="footer-item_subscribe info-item P30 bg-5">
 								<h3 class="icon-graduation-cap"><span><?php echo ($lang=='en')?('Search'):('Trouver une formation'); ?></span></h3>
 
-								<p id="searchMsg">
+								<p>
 									<?php echo ($lang=='en')?('To find a training, please enter a keyword here'):('Pour effectuer une recherche de formation, entrer tout simplement un mot clé'); ?> 
 								</p>
 								<p>
@@ -228,9 +228,9 @@ if($lang=='en')
 			$(document).ready(function(){
 				//SUBMIT SEARCH TRAININGs FORM
 				$(document).on('click', '#btn-search-tr', function(){
-					var langue = $("#lang").val();
-					var mot_cle = $("#keyword").val();
-					if($("#keyword").val().match(/[^#*%$£!§@&"|()_=+`:;~{}]$/)){
+					if($("#keyword").val().match(/^[a-z0-9._ -çéèàôöëêîù']+$/i)){
+						var mot_cle = $("#keyword").val();
+						var langue = $("#lang").val();
 						var data='keyword='+mot_cle+'&langue='+langue;
 						$.ajax({
 							type : 'POST',
@@ -238,22 +238,15 @@ if($lang=='en')
 							data : data,
 							success :  function(data)
 									   {						
-											//alert(data);
-											$("#searchMsg").fadeIn().html(data);
+											alert(data);
 										}
 						});
 						return false;
 					}
 					else{
-						if($("#keyword").val()==''){
-							$("#searchMsg").fadeIn().html((langue=='fr')?('Veuillez saisir un mot clé.'):('Please enter a keyword'));
-						}
-						else{
-							$("#searchMsg").fadeIn().html((langue=='fr')?('Ce mot clé n\'est pas valide. Veuillez réessayer.'):('This keyword is not valid. Please try again.'));
-						}
+						alert('Expression non autorisée!!');
 					}
 				});
-				
 			});
 		</script>
 	</body>

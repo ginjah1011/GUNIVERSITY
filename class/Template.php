@@ -258,14 +258,14 @@ class Template{
 	}
 	
 	//ARTICLES
-	function trunc($phrase, $max_words){
+	public function trunc($phrase, $max_words){
 	   $phrase_array = explode('.',$phrase);
 	   if(count($phrase_array) > $max_words && $max_words > 0)
 		  $phrase = implode('.',array_slice($phrase_array, 0, $max_words)).'.'; 
 	   return $phrase;
 	}
 	
-	function getArticle($id){
+	public function getArticle($id){
 		$article=$this->pdo->queryParam('SELECT * FROM con_articles WHERE id_articles=? ', array($id));
 		if(!empty($article)){
 			return $article;
@@ -274,7 +274,7 @@ class Template{
 			return NULL;
 	}
 	
-	function initArticleVedette($lang){
+	public function initArticleVedette($lang){
 		$articleVedette=$this->pdo->queryParam('SELECT * FROM con_homemodules WHERE active_homeModule=? AND cat_homeModule=?', array(1, 1));
 		if(!empty($articleVedette)){
 			foreach($articleVedette as $valeur){
@@ -330,7 +330,7 @@ class Template{
 		}
 	}
 	
-	function initBlocInfos($lang){
+	public function initBlocInfos($lang){
 		$articleInfo=$this->pdo->queryParam('SELECT * FROM con_infobox WHERE active_infoBox=?', array(1));
 		if(!empty($articleInfo)){
 			foreach($articleInfo as $valeur){ ?>

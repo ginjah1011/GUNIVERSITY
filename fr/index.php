@@ -5,6 +5,7 @@ Autoloader::register();
 $configSession = new ConfigSession;
 $db= new MyDB;
 $tpl=new Template;
+$training=new Trainings;
 $page="home";
 $url = "http://".$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
 if($lang=='fr')
@@ -40,6 +41,7 @@ if($lang=='en')
 		<!-- CSS
 		================================================== -->
 		<link rel="stylesheet" href="css/style.css" type="text/css">
+		<link rel="stylesheet" href="css/template.css" type="text/css">
 		<link rel="stylesheet" href="css/responsive.css" type="text/css">
 
 		<!-- / color -->
@@ -132,13 +134,14 @@ if($lang=='en')
 							<div class="footer-item_subscribe info-item P30 bg-5">
 								<h3 class="icon-graduation-cap"><span><?php echo ($lang=='en')?('Search'):('Trouver une formation'); ?></span></h3>
 
-								<p>
+								<p id="searchMsg">
 									<?php echo ($lang=='en')?('To find a training, please enter a keyword here'):('Pour effectuer une recherche de formation, entrer tout simplement un mot clé'); ?> 
 								</p>
 								<p>
-								<form id="footer-form" action="#">
-									<input type="text" />
-									<button type="submit"><i class="arrow"></i></button>
+								<form id="search-form" action="javascript:;" >
+									<input name="keyword" id="keyword" type="text" />
+									<input name="lang" id="lang" type="hidden" value="<?= $lang ?>" />
+									<button id="btn-search-tr" type="submit"><i class="arrow"></i></button>
 								</form>
 								</p>
 								<a href="#" class="more-link"><i class="arrow"></i><?php echo ($lang=='en')?('More details'):('Recherche détaillée'); ?></a>
@@ -181,7 +184,6 @@ if($lang=='en')
 									<p><?php echo ($lang=='en')?('Please subscribe to our newsletter'):('Inscrivez-vous à notre newsletter'); ?></p>
 
 									<input type="text" />
-
 									<button type="submit"><i class="arrow"></i></button>
 								</form>
 
@@ -223,11 +225,36 @@ if($lang=='en')
 		
 		<!-- FONCTION PERSO -->
 		<script type="text/javascript">
-		$(document).ready(function(){
-			//SUBMIT SEARCH TRAININGs FORM
-			$('#search-training-form').submit(function(){
-				alert('recherche lancée!!!');
-			})
-		})
+			$(document).ready(function(){
+				//SUBMIT SEARCH TRAININGs FORM
+				$(document).on('click', '#btn-search-tr', function(){
+					var langue = $("#lang").val();
+					var mot_cle = $("#keyword").val();
+					if($("#keyword").val().match(/[^#*%$£!§@&"|()_=+`:;~{}]$/)){
+						var data='keyword='+mot_cle+'&langue='+langue;
+						$.ajax({
+							type : 'POST',
+							url  : '../class/handlerSearchTraining.php',
+							data : data,
+							success :  function(data)
+									   {						
+											//alert(data);
+											$("#searchMsg").fadeIn().html(data);
+										}
+						});
+						return false;
+					}
+					else{
+						if($("#keyword").val()==''){
+							$("#searchMsg").fadeIn().html((langue=='fr')?('Veuillez saisir un mot clé.'):('Please enter a keyword'));
+						}
+						else{
+							$("#searchMsg").fadeIn().html((langue=='fr')?('Ce mot clé n\'est pas valide. Veuillez réessayer.'):('This keyword is not valid. Please try again.'));
+						}
+					}
+				});
+				
+			});
+		</script>
 	</body>
 </html>

@@ -12,13 +12,14 @@ if($lang=='fr')
 	$switchLanguage=str_replace('/fr/', '/en/', $url);
 if($lang=='en')
 	$switchLanguage=str_replace('/en/', '/fr/', $url);
-//$article=$tpl->getArticle(1);
+$found_training=$training->getAllTrainings();
+var_dump($found_training);
 
 //foreach($article as $valeur){
 //	var_dump($valeur->text_article_fr);
 //	echo $tpl->trunc($valeur->text_article_fr, 3);
 //}
-//exit();
+exit();
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
@@ -228,9 +229,9 @@ if($lang=='en')
 			$(document).ready(function(){
 				//SUBMIT SEARCH TRAININGs FORM
 				$(document).on('click', '#btn-search-tr', function(){
-					var langue = $("#lang").val();
-					var mot_cle = $("#keyword").val();
-					if($("#keyword").val().match(/[^#*%$£!§@&"|()_=+`:;~{}]$/)){
+					if($("#keyword").val().match(/^[a-z0-9._ -çéèàôöëêîù']+$/i)){
+						var mot_cle = $("#keyword").val();
+						var langue = $("#lang").val();
 						var data='keyword='+mot_cle+'&langue='+langue;
 						$.ajax({
 							type : 'POST',
@@ -245,15 +246,10 @@ if($lang=='en')
 						return false;
 					}
 					else{
-						if($("#keyword").val()==''){
-							$("#searchMsg").fadeIn().html((langue=='fr')?('Veuillez saisir un mot clé.'):('Please enter a keyword'));
-						}
-						else{
-							$("#searchMsg").fadeIn().html((langue=='fr')?('Ce mot clé n\'est pas valide. Veuillez réessayer.'):('This keyword is not valid. Please try again.'));
-						}
+						if($("#keyword").val()=='')
+							//alert('Expression non autorisée!!');
 					}
 				});
-				
 			});
 		</script>
 	</body>
